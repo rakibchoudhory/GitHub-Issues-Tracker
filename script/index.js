@@ -382,3 +382,18 @@ document.getElementById("btn-search").addEventListener("click",()=> {
 })
 
 
+
+// Loadding
+
+const manageLoading = status => {
+    if ( status=== true){
+        document.getElementById("loading").classList.remove('hidden');
+        document.getElementById("card-container").classList.add("hidden");
+    }
+
+    else {
+        document.getElementById("card-container").classList.remove("hidden");
+        document.getElementById("loading").classList.add("hidden")
+
+    }
+}
