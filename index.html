@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./image/github-logo.png" type="image/x-icon">
+    <!-- Daisi UI And Tailwind Css -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome Cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <!-- login -->
+    <section class="w-[45%] md:w-[35%] lg:w-[30%] mx-auto my-3 shadow-[0_0_10px_rgba(0,0,0,0.2)] rounded-lg py-3" >
+
+            <div class="flex flex-col justify-center items-center gap-1 ">
+            <img class="mb-2" src="image/github-logo.png" alt="">
+            
+                <h2 class=" text-center text-2xl font-semibold">GitHub Issues Tracker</h2>
+            <p class="text-gray-400 text-center">Sign in to manage your issues</p>
+            
+        </div>
+        <!-- input -->
+        <div class="flex justify-center ">
+            <fieldset class="fieldset  rounded-box w-xs  px-8 pt-2 ">
+
+                <label class="label text-black  font-semibold">Username</label>
+                <input id="user-input" type="email mb-3 w-full" class="input shadow-sm" placeholder="Enter Username" value="admin"/>
+                <p class="text-primary">Default: admin</p>
+
+                <label class="label text-black  font-semibold">Password</label>
+                <input id="password-input" type="password w-full" class="input shadow-sm" placeholder="Enter Password" value="admin123"/>
+                <p class="text-primary">Default: admin123</p>
+
+                <button id="btn-sing-in" onclick="openHomePage()" class="btn btn-primary mt-2">Sign in</button>
+                <!-- divider -->
+                <div class="flex w-full flex-col">
+                    <div class="divider">OR</div>
+                    <p class="text-center text-gray-400 ">Demo Credentials:</p>
+                    <div class="flex flex-col justify-center items-center bg-sky-50 py-3 rounded-md">
+                        <p ><span class="font-bold">Username:</span> admin</p>
+                        <p ><span class="font-bold">Password:</span> admin123</p>
+                    </div>
+                    <div>
+
+                    </div>
+
+                </div>
+            </fieldset>
+        </div>
+        
+    </section>
+   
+    <script src="./script/index.js"></script>
+</body>
+
+</html>
