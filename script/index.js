@@ -15,6 +15,35 @@ const openHomePage = ()  => {
 }
 
 
+let textLevel = arr => arr.map(el => {
+    if(el.toLowerCase() === "bug"){
+        return `<div class="flex items-center gap-1 py-0 px-1 rounded-full bg-red-100 border border-red-300">
+                    <img src="./image/BugDroid.png" alt="">
+                    <p class="text-red-300 font-semibold">${el}</p>
+                </div>`;
+    } else if(el.toLowerCase() === "help wanted"){
+        return `<div class="flex items-center font-semibold gap-1 bg-amber-100 border border-amber-300 px-1 py-1 rounded-full ">
+                    <img src="./image/Lifebuoy.png" alt="">
+                    <p class="text-amber-300">${el}</p>
+                </div>`;
+    }
+     else if(el.toLowerCase() === "enhancement") {
+        return `<div class="flex items-center font-semibold gap-1 bg-amber-100 border border-amber-300 px-1 py-1 rounded-full ">
+                    <img src="./image/Vector.png" alt="">
+                    <p class="text-amber-300">${el}</p>
+                </div>`;
+    }
+     else{
+        return `<div class="flex items-center font-semibold gap-1 bg-amber-100 border border-amber-300 px-1 py-1 rounded-full ">
+                    <img src="./image/Lifebuoy.png" alt="">
+                    <p class="text-amber-300">${el}</p>
+                </div>`;
+    }
+}).join("");
+
+
+
+
 
 const loadissues = () => {
 
@@ -256,3 +285,5 @@ let displayCloseBtn = closeIssues => {
     let openBtnCountIssues= document.getElementById("issues-count");
     openBtnCountIssues.innerText=cardContainer.children.length;
 }
+
+
