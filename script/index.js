@@ -358,3 +358,27 @@ console.log(modal);
  document.getElementById("my-modal").showModal();
 
 }};
+
+// Search Input
+document.getElementById("btn-search").addEventListener("click",()=> { 
+    // removeActive()
+      manageLoading(true);
+    let input= document.getElementById("search-input");
+    let searchValue = input.value.trim().toLowerCase();
+    console.log(searchValue);
+
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    .then(res => res.json())
+    .then(data => {
+        let allwords= data.data;
+        console.log(allwords);
+
+        let filterWords= allwords.filter(title=>title.title.toLowerCase().includes(searchValue)
+        );
+       displayissues(filterWords)
+       manageLoading(false)
+    });
+
+})
+
+
