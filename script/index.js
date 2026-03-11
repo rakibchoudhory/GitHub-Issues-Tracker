@@ -137,8 +137,122 @@ const displayissues= (issues) => {
 }
 
 
-
-
 window.onload = () => {
     loadissues();
+}
+
+
+
+let loadOpenBtn = () => {
+     let url= "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayOpenBtnissues(data.data))
+   
+}
+
+let  displayOpenBtnissues = openissues => {
+   
+  let cardContainer = document.getElementById("card-container");
+    cardContainer.innerHTML="";
+
+    for ( let openissue of openissues){
+
+          if ( openissue.status=="open"){
+            let openBtnNewDiv= document.createElement("div");
+           openBtnNewDiv.innerHTML=`
+               <div onclick="cardDetails(${openissue.id})"  class="h-full flex flex-col card  shadow-sm w-11/12 mx-auto border-t-5 border-green-500 hover:scale-104 transition duration-300">
+                <div class="w-11/12 mx-auto py-3 h-auto ">
+                    <div class="flex items-center justify-between  mb-4  ">
+                        <img src="./image/Open-Status.png" alt="">
+                        <p class="px-8 py-1 bg-red-100 rounded-full">${openissue.priority}</p>
+                    </div>
+                    <div class="space-y-1 mb-4">
+                        <h2 class="font-semibold text-xl">${openissue.title}</h2>
+                        <p class="text-gray-400"> 
+                        ${openissue.description}
+                        </p>
+                    </div>
+
+                    <div class="flex gap-2 flex-wrap">
+                        ${textLevel(openissue.labels)}
+                    </div>
+
+                </div>
+                <div class="border-t-1 border-gray-200">
+                    <div class="w-11/12 mx-auto py-3">
+                        <p class="text-gray-400">${openissue.id} ${openissue.author}</p>
+                        <p class="text-gray-400">${new Date(openissue.createdAt).toLocaleDateString("en-US")}</p>
+                    </div>
+                </div>
+            </div>
+
+           
+            `;
+            cardContainer.appendChild(openBtnNewDiv);
+           let openBtnCountIssues= document.getElementById("issues-count");
+           openBtnCountIssues.innerText=cardContainer.children.length;
+        }
+    }
+
+}
+
+
+
+
+
+let loadClosedBtn = () => {
+     let url= "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayCloseBtn(data.data))
+}
+
+let displayCloseBtn = closeIssues => {
+    let cardContainer = document.getElementById("card-container");
+    cardContainer.innerHTML="";
+
+     for ( let closeIssue of closeIssues){
+
+          if ( closeIssue.status=="closed"){
+            let CloseBtnNewDiv= document.createElement("div");
+           CloseBtnNewDiv.innerHTML=`
+            <div onclick="cardDetails(${closeIssue.id})" class="card shadow-sm w-11/12 mx-auto border-t-5 border-[#A855F7]  h-full flex flex-col hover:scale-104 transition duration-300">
+                <div class="w-11/12 mx-auto py-3  ">
+                    <div class="flex items-center justify-between  mb-4  ">
+                        <img src="./image/Closed- Status .png" alt="">
+                        <p class="px-8 py-1 bg-red-100 rounded-full">${closeIssue.priority}</p>
+                    </div>
+                    <div class="space-y-1 mb-4">
+                        <h2 class="font-semibold text-xl">${closeIssue.title}</h2>
+                        <p class="text-gray-400"> 
+                        ${closeIssue.description}
+                        </p>
+                    </div>
+
+                    <div class="flex gap-2 flex-wrap">
+                        ${textLevel(closeIssue.labels)}
+                    </div>
+
+                </div>
+                <div class="border-t-1 border-gray-200">
+                    <div class="w-11/12 mx-auto py-3">
+                        <p class="text-gray-400">${closeIssue.id} ${closeIssue.author}</p>
+                        <p class="text-gray-400">${new Date(closeIssue.createdAt).toLocaleDateString("en-US")}</p>
+                    </div>
+                </div>
+            </div>
+
+           
+            `;
+            cardContainer.appendChild(CloseBtnNewDiv);
+            let length = cardContainer.length;
+            console.log(length);
+        }
+    }
+    
+    let openBtnCountIssues= document.getElementById("issues-count");
+    openBtnCountIssues.innerText=cardContainer.children.length;
 }
