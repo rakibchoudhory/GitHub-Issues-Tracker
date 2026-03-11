@@ -287,3 +287,21 @@ let displayCloseBtn = closeIssues => {
 }
 
 
+
+// let removeActive = () => {
+//     let categoriesBtn = document.querySelectorAll(".category-btn");
+//    categoriesBtn.forEach(btn => {
+//     btn.classList.remove("active")
+//    })
+// }
+// removeActive()
+
+let addActive = (btn) => {
+    let categoriesBtn = document.querySelectorAll(".category-btn");
+   categoriesBtn.forEach(btn => {
+    btn.classList.remove("active")
+   })
+        btn.classList.add("active")
+    
+}
+
