@@ -305,3 +305,56 @@ let addActive = (btn) => {
     
 }
 
+// card details
+
+let cardDetails = (id) =>{
+    fetch ( `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
+    .then(res => res.json())
+    .then(data => displayModal(data.data));
+
+let displayModal = modal => {
+console.log(modal);
+    
+ let detailsContainer = document.getElementById("details-container");
+ detailsContainer.innerHTML= `
+    
+     <div class=" space-y-4">
+       <div class="space-y-3">
+         <h2 class="text-4xl font-bold">${modal.title}</h2>
+        <p class="text-gray-400"><span class="px-2 py-1 bg-green-400 text-white rounded-2xl cursor-pointer">${modal.status}</span>  ●  Opened by ${modal.assignee}  ●  ${new Date(modal.createdAt).toLocaleDateString("en-US")}</p>
+       </div>
+     <div class="flex gap-4">
+       ${textLevel(modal.labels)}
+     </div>
+       <div >
+        <p class="text-gray-400 mt-3">${modal.description}</p>
+       </div>
+
+       <div class="bg-gray-200 rounded-lg py-4 px-8 flex justify-between ">
+        <div>
+            <p class="text-gray-400">Assignee:</p>
+            <p>${modal.assignee}</p>
+        </div>
+
+        <div >
+            <p>Priority:</p>
+            <p class="bg-red-400 text-white py-1 px-2 rounded-2xl cursor-pointer">${modal.priority}</p>
+        </div>
+
+       </div>
+
+
+    
+
+
+ <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn bg-red-600  outline-none  cursor-pointer active:border-green-600 border-3">Close</button>
+      </form>
+    </div>
+    </div>
+ `;
+ document.getElementById("my-modal").showModal();
+
+}};
